@@ -482,6 +482,7 @@ INF  AdvLoggerPkg/AdvancedFileLogger/AdvancedFileLogger.inf
 INF  MsCorePkg/Universal/StatusCodeHandler/Serial/Dxe/SerialStatusCodeHandlerDxe.inf
 INF  MsCorePkg/MuCryptoDxe/MuCryptoDxe.inf
 INF  MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTableDxe/FirmwarePerformanceDxe.inf
+INF  MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTableSmm/FirmwarePerformanceSmm.inf
 INF  MsGraphicsPkg/MsEarlyGraphics/Dxe/MsEarlyGraphics.inf
 INF  MsWheaPkg/MsWheaReport/Dxe/MsWheaReportDxe.inf
 INF  MsWheaPkg/MsWheaReport/Smm/MsWheaReportStandaloneMm.inf

@@ -318,6 +318,15 @@
     BaseCryptLib|CryptoPkg/Library/BaseCryptLibOnProtocolPpi/SmmCryptLib.inf
     TlsLib|CryptoPkg/Library/BaseCryptLibOnProtocolPpi/SmmCryptLib.inf
 
+!if $(PERF_TRACE_ENABLE) == TRUE
+    PerformanceLib|MdeModulePkg/Library/SmmPerformanceLib/SmmPerformanceLib.inf
+!endif
+
+!if $(PERF_TRACE_ENABLE) == TRUE
+  [LibraryClasses.X64.SMM_CORE]
+    PerformanceLib|MdeModulePkg/Library/SmmCorePerformanceLib/SmmCorePerformanceLib.inf
+!endif
+
   [Components.IA32]
     CryptoPkg/Driver/CryptoPei.inf {
         <LibraryClasses>
@@ -541,6 +550,11 @@
   PrmModuleDiscoveryLib|PrmPkg/Library/DxePrmModuleDiscoveryLib/DxePrmModuleDiscoveryLib.inf
   PrmPeCoffLib|PrmPkg/Library/DxePrmPeCoffLib/DxePrmPeCoffLib.inf
 
+!if $(PERF_TRACE_ENABLE) == TRUE
+[LibraryClasses.common.UEFI_APPLICATION, LibraryClasses.common.DXE_RUNTIME_DRIVER, LibraryClasses.common.DXE_DRIVER, LibraryClasses.common.UEFI_DRIVER]
+  PerformanceLib|MdeModulePkg/Library/DxePerformanceLib/DxePerformanceLib.inf
+!endif
+
 #########################################
 # SEC Libraries
 #########################################
@@ -563,6 +577,10 @@
   DebugAgentLib|SourceLevelDebugPkg/Library/DebugAgent/SecPeiDebugAgentLib.inf
 !endif
   MemEncryptSevLib|QemuQ35Pkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+
+!if $(PERF_TRACE_ENABLE) == TRUE
+  PerformanceLib|MdeModulePkg/Library/PeiPerformanceLib/PeiPerformanceLib.inf
+!endif
 
 [LibraryClasses.common.DXE_DRIVER, LibraryClasses.common.DXE_CORE, LibraryClasses.common.UEFI_APPLICATION]
   DxeMemoryProtectionHobLib|MdeModulePkg/Library/MemoryProtectionHobLib/DxeMemoryProtectionHobLib.inf
@@ -667,6 +685,9 @@
   DebugAgentLib|SourceLevelDebugPkg/Library/DebugAgent/DxeDebugAgentLib.inf
 !endif
 
+!if $(PERF_TRACE_ENABLE) == TRUE
+  PerformanceLib|MdeModulePkg/Library/DxeCorePerformanceLib/DxeCorePerformanceLib.inf
+!endif
 
 [LibraryClasses.common.DXE_RUNTIME_DRIVER]
   ReportStatusCodeLib|MdeModulePkg/Library/RuntimeDxeReportStatusCodeLib/RuntimeDxeReportStatusCodeLib.inf
@@ -813,6 +834,10 @@ PlatformSmmProtectionsTestLib|UefiTestingPkg/Library/PlatformSmmProtectionsTestL
   gUefiCpuPkgTokenSpaceGuid.PcdCpuHotPlugSupport|FALSE
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdRequireIommu|FALSE # don't require IOMMU
+  
+  !if $(PERF_TRACE_ENABLE) == TRUE
+    gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwarePerformanceDataTableS3Support|FALSE
+  !endif
 
   !if $(BUILD_UNIT_TESTS) == TRUE
     gUefiCpuPkgTokenSpaceGuid.PcdSmmExceptionTestModeSupport|TRUE
@@ -850,6 +875,14 @@ PlatformSmmProtectionsTestLib|UefiTestingPkg/Library/PlatformSmmProtectionsTestL
   gEfiMdeModulePkgTokenSpaceGuid.PcdStatusCodeUseMemory|TRUE
   gPcAtChipsetPkgTokenSpaceGuid.PcdUartIoPortBaseAddress|0x402
 
+!if $(PERF_TRACE_ENABLE) == TRUE
+  # Sets bits 0, 3 to enable measurement but skip binding supports
+  gEfiMdePkgTokenSpaceGuid.PcdPerformanceLibraryPropertyMask|0x31
+  # 16M should be enough to fit all the verbose measurements
+  gEfiMdeModulePkgTokenSpaceGuid.PcdExtFpdtBootRecordPadSize|0x1000000
+  gEfiMdeModulePkgTokenSpaceGuid.PcdMaxPeiPerformanceLogEntries|60
+!endif
+
   # DEBUG_INIT      0x00000001  // Initialization
   # DEBUG_WARN      0x00000002  // Warnings
   # DEBUG_LOAD      0x00000004  // Load events
@@ -870,7 +903,7 @@ PlatformSmmProtectionsTestLib|UefiTestingPkg/Library/PlatformSmmProtectionsTestL
   # DEBUG_VERBOSE   0x00400000  // Detailed debug messages that may
   #                             // significantly impact boot performance
   # DEBUG_ERROR     0x80000000  // Error
-   gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80080246
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80080346
   #gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x800002CF # use when debugging depex loading issues
   gEfiMdePkgTokenSpaceGuid.PcdFixedDebugPrintErrorLevel|gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel
 
@@ -1037,6 +1070,10 @@ PlatformSmmProtectionsTestLib|UefiTestingPkg/Library/PlatformSmmProtectionsTestL
 [Components.IA32]
   QemuQ35Pkg/ResetVector/ResetVector.inf
 
+  !if $(PERF_TRACE_ENABLE) == TRUE
+    MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTablePei/FirmwarePerformancePei.inf
+  !endif
+
   #########################################
   # SEC Phase modules
   #########################################
@@ -1131,10 +1168,21 @@ PlatformSmmProtectionsTestLib|UefiTestingPkg/Library/PlatformSmmProtectionsTestL
     !include CryptoPkg/Driver/Bin/Crypto.pcd.STANDARD.inc.dsc
 !endif
 
+!if $(PERF_TRACE_ENABLE) == TRUE
+[Components.common]
+  PerformancePkg/Application/FbptDump/FbptDump.inf
+!endif
+
 [Components.X64]
   #########################################
   # DXE Phase modules
   #########################################
+
+!if $(PERF_TRACE_ENABLE) == TRUE
+  MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTableDxe/FirmwarePerformanceDxe.inf
+  MdeModulePkg/Universal/Acpi/FirmwarePerformanceDataTableSmm/FirmwarePerformanceSmm.inf
+!endif
+
   # Spoofs button press to automatically boot to FrontPage.
   OemPkg/FrontpageButtonsVolumeUp/FrontpageButtonsVolumeUp.inf
 
