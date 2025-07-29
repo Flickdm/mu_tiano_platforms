@@ -25,6 +25,9 @@
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = QemuQ35Pkg/QemuQ35Pkg.fdf
 
+  #TODO [SHARED_CRYPTO] This is not permanent. This will be satisfied by a Extdep
+  SHARED_SHARED_CRYPTO_PATH  = MU_BASECORE/CryptoPkg/Binaries/edk2-sharedcrypto-driver-bin
+  
   #
   # Defines for default states.  These can be changed on the command line.
   # -D FLAG=VALUE
@@ -359,6 +362,7 @@
 
   PeCoffLibNegative|SeaPkg/Library/BasePeCoffLibNegative/BasePeCoffLibNegative.inf
   SecurePolicyLib|MmSupervisorPkg/Library/SecurePolicyLib/SecurePolicyLib.inf
+
 #########################################
 # PEI Libraries
 #########################################
@@ -900,6 +904,7 @@
 ################################################################################
 !include MfciPkg/MfciPkg.dsc.inc
 
+
 ################################################################################
 #
 # Components Section - list of all EDK II Modules needed by this Platform.
@@ -907,6 +912,7 @@
 ################################################################################
 [Components]
   !include $(SHARED_CRYPTO_PATH)/Driver/Bin/CryptoDriver.inc.dsc
+  !include $(SHARED_SHARED_CRYPTO_PATH)/SharedCrypto.inc.dsc
 
 QemuQ35Pkg/Library/PeiFvMeasurementExclusionLib/PeiFvMeasurementExclusionLib.inf
 
@@ -1554,6 +1560,7 @@ QemuQ35Pkg/Library/ResetSystemLib/StandaloneMmResetSystemLib.inf
       MfciRetrievePolicyLib|MfciPkg/Library/MfciRetrievePolicyLibViaHob/MfciRetrievePolicyLibViaHob.inf
       MfciDeviceIdSupportLib|MfciPkg/Library/MfciDeviceIdSupportLibSmbios/MfciDeviceIdSupportLibSmbios.inf
   }
+
 
 !include TpmTestingPkg/TpmReplay.dsc.inc
 

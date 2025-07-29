@@ -29,6 +29,7 @@ DEFINE FVMAIN_SIZE       = 0x00348000
 DEFINE SECFV_OFFSET      = 0x003CC000
 DEFINE SECFV_SIZE        = 0x34000
 
+DEFINE SHARED_SHARED_CRYPTO_PATH  = MU_BASECORE/CryptoPkg/Binaries/edk2-sharedcrypto-driver-bin
 
 SET gUefiQemuQ35PkgTokenSpaceGuid.PcdOvmfFdBaseAddress     = $(FW_BASE_ADDRESS)
 SET gUefiQemuQ35PkgTokenSpaceGuid.PcdOvmfFirmwareFdSize    = $(FW_SIZE)
@@ -526,6 +527,11 @@ INF  MsCorePkg/AcpiRGRT/AcpiRgrt.inf
 !else
   !include $(SHARED_CRYPTO_PATH)/Driver/Bin/CryptoDriver.RUNTIMEDXE.inc.fdf
 !endif
+
+# [SHARED_CRYPTO] This is needs to be cleaned up. This is only temporary
+!include $(SHARED_SHARED_CRYPTO_PATH)/SharedCrypto.CryptoBinary.inc.fdf
+!include $(SHARED_SHARED_CRYPTO_PATH)/SharedCrypto.Dxe.inc.fdf
+!include $(SHARED_SHARED_CRYPTO_PATH)/SharedCrypto.StandaloneMm.inc.fdf
 
 !if $(BUILD_UNIT_TESTS) == TRUE
   # INF UefiTestingPkg/FunctionalSystemTests/SmmPagingProtectionsTest/Smm/SmmPagingProtectionsTestStandaloneMm.inf # NOT YET SUPPORTED
