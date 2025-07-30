@@ -522,8 +522,8 @@ INF  SecurityPkg/Hash2DxeCrypto/Hash2DxeCrypto.inf
 INF  MsCorePkg/AcpiRGRT/AcpiRgrt.inf
 
 !if $(SMM_ENABLED) == TRUE
-  !include $(SHARED_CRYPTO_PATH)/Driver/Bin/CryptoDriver.DXE.inc.fdf
-  !include $(SHARED_CRYPTO_PATH)/Driver/Bin/CryptoDriver.STANDALONEMM_MMSUPV.inc.fdf
+  # TODOUG - DELETE !include $(SHARED_CRYPTO_PATH)/Driver/Bin/CryptoDriver.DXE.inc.fdf
+  # TODOUG - DELETE !include $(SHARED_CRYPTO_PATH)/Driver/Bin/CryptoDriver.STANDALONEMM_MMSUPV.inc.fdf
 !else
   !include $(SHARED_CRYPTO_PATH)/Driver/Bin/CryptoDriver.RUNTIMEDXE.inc.fdf
 !endif
