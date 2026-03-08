@@ -46,14 +46,14 @@
   DEFINE CUSTOM_STACK_CHECK_LIB         = DYNAMIC
 
   PEI_CRYPTO_SERVICES = TINY_SHA
-  DXE_CRYPTO_SERVICES = STANDARD
+  DXE_CRYPTO_SERVICES = NONE
   SMM_CRYPTO_SERVICES = NONE
   STANDALONEMM_CRYPTO_SERVICES = NONE
-  STANDALONEMM_MMSUPV_CRYPTO_SERVICES = STANDARD
-  DXE_CRYPTO_ARCH = X64
+  STANDALONEMM_MMSUPV_CRYPTO_SERVICES = NONE
+  DXE_CRYPTO_ARCH = NONE
   SMM_CRYPTO_ARCH = NONE
   STANDALONEMM_CRYPTO_ARCH = NONE
-  STANDALONEMM_MMSUPV_CRYPTO_ARCH = X64
+  STANDALONEMM_MMSUPV_CRYPTO_ARCH = NONE
 
 ################################################################################
 #
@@ -845,7 +845,7 @@
   # UefiCpuPkg PCDs related to initial AP bringup and general AP management.
   gUefiCpuPkgTokenSpaceGuid.PcdCpuBootLogicalProcessorNumber|0
 
-  gUefiQemuQ35PkgTokenSpaceGuid.PcdQ35TsegMbytes|8
+  gUefiQemuQ35PkgTokenSpaceGuid.PcdQ35TsegMbytes|16
   gUefiQemuQ35PkgTokenSpaceGuid.PcdQ35SmramAtDefaultSmbase|FALSE
 
 

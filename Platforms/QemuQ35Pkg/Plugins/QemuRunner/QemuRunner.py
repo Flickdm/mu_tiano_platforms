@@ -73,6 +73,8 @@ class QemuRunner(uefi_helper_plugin.IUefiHelperPlugin):
         args += " -global isa-debugcon.iobase=0x402"
         # Turn off S3 support
         args += " -global ICH9-LPC.disable_s3=1"
+        # Increase TSEG to 24 Mb (instrumentation: measuring pool reclaimable pages)
+        args += " -global mch.extended-tseg-mbytes=24"
 
         accel = ""
         if env.GetValue("QEMU_ACCEL") is not None:
