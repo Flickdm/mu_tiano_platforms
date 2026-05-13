@@ -1,0 +1,14 @@
+{
+  "override_id": "onecrypto-bin",
+  "id": "onecrypto-bin-override",
+  "scope": "global",
+  "type": "web",
+  "name": "onecrypto-bin",
+  "source": "http://127.0.0.1:8000/OneCrypto-Drivers.zip",
+  "version": "1.0.1",
+  "sha256": "2d3c5f224015226c8d80cf7cc70602a5bec813ee77617004a3cac7b94465e4b6",
+  "compression_type": "zip",
+  "internal_path": "/",
+  "flags": ["set_build_var"],
+  "var_name": "BLD_*_ONE_CRYPTO_PATH"
+}
