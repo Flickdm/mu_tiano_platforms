@@ -459,6 +459,8 @@
   UpdateFacsHardwareSignatureLib|OemPkg/Library/UpdateFacsHardwareSignatureLib/UpdateFacsHardwareSignatureLib.inf
   PcdDatabaseLoaderLib|MdeModulePkg/Library/PcdDatabaseLoaderLib/Dxe/PcdDatabaseLoaderLibDxe.inf
   CapsuleLib|MdeModulePkg/Library/DxeCapsuleLibFmp/DxeCapsuleLib.inf
+  CryptoIndicatorRegistrationLib|SecurityPkg/Library/CryptoIndicatorRegistrationLib/CryptoIndicatorRegistrationLibDxe.inf
+  EcitReportLib|SecurityPkg/Library/EcitReportLib/EcitReportLib.inf
 !if $(TPM2_ENABLE) == TRUE
   Tpm2DeviceLib|SecurityPkg/Library/Tpm2DeviceLibTcg2/Tpm2DeviceLibTcg2.inf
 !endif
@@ -1241,6 +1243,8 @@
 
   MsGraphicsPkg/PrintScreenLogger/PrintScreenLogger.inf
   SecurityPkg/Hash2DxeCrypto/Hash2DxeCrypto.inf
+  SecurityPkg/CryptoIndicatorTable/CryptoIndicatorTableDxe.inf
+  SecurityPkg/Application/DumpCryptoIndicatorTable/DumpCryptoIndicatorTable.inf
 
 ## Unit Tests
 #
