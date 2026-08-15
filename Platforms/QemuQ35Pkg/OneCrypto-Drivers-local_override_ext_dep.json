@@ -4,9 +4,9 @@
   "id": "onecrypto-bin-local-override",
   "override_id": "onecrypto-bin",
   "name": "onecrypto-bin-local-override",
-  "source": "https://github.com/Flickdm/mu_crypto_release/releases/download/v1.0.2-ecit-preview.1/OneCrypto-Accelerated.zip",
-  "version": "v1.0.2-ecit-preview.1",
-  "sha256": "a5ce2141d140ee676d41efbc72591b2423891377665a86c22e07642d70376dbc",
+  "source": "https://github.com/Flickdm/mu_crypto_release/releases/download/v1.0.2-ecit-preview.2/OneCrypto-Accelerated.zip",
+  "version": "v1.0.2-ecit-preview.2",
+  "sha256": "0289f05ee5dc1978b60886a81cc455d0f8ebd04679f03eb6113e985ac7addd35",
   "compression_type": "zip",
   "internal_path": "/",
   "flags": [
