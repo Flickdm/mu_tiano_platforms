@@ -342,6 +342,8 @@
 
 [LibraryClasses.common.SMM_CORE, LibraryClasses.common.DXE_SMM_DRIVER]
   MmMemoryProtectionHobLib|MdeModulePkg/Library/MemoryProtectionHobLib/SmmMemoryProtectionHobLib.inf
+  # ECIT collector is DXE-only; MM/SMM consumers (e.g. AuthVariableLib) get the no-op.
+  EcitReportLib|SecurityPkg/Library/EcitReportLibNull/EcitReportLibNull.inf
 
 [LibraryClasses.common.MM_CORE_STANDALONE, LibraryClasses.common.MM_STANDALONE]
   MmMemoryProtectionHobLib|MdeModulePkg/Library/MemoryProtectionHobLib/StandaloneMmMemoryProtectionHobLib.inf
@@ -534,6 +536,9 @@
   SysCallLib|MmSupervisorPkg/Library/SysCallLib/SysCallLib.inf
   CpuLib|MmSupervisorPkg/Library/BaseCpuLibSysCall/BaseCpuLib.inf
   BaseCryptLib|CryptoPkg/Library/BaseCryptLibOnOneCrypto/StandaloneMmCryptLib.inf
+  # ECIT: report MM-phase feature capabilities into the MM collector; the DXE bridge drains them.
+  EcitReportLib|SecurityPkg/Library/EcitReportLib/EcitReportLib.inf
+  CryptoIndicatorRegistrationLib|SecurityPkg/Library/CryptoIndicatorRegistrationLib/CryptoIndicatorRegistrationLibStandaloneMm.inf
   TlsLib|CryptoPkg/Library/BaseCryptLibOnOneCrypto/StandaloneMmCryptLib.inf
 
 !if $(PERF_TRACE_ENABLE) == TRUE
@@ -1244,6 +1249,7 @@
   MsGraphicsPkg/PrintScreenLogger/PrintScreenLogger.inf
   SecurityPkg/Hash2DxeCrypto/Hash2DxeCrypto.inf
   SecurityPkg/CryptoIndicatorTable/CryptoIndicatorTableDxe.inf
+  SecurityPkg/CryptoIndicatorTable/CryptoIndicatorBridgeDxe.inf
   SecurityPkg/Application/DumpCryptoIndicatorTable/DumpCryptoIndicatorTable.inf
 
 ## Unit Tests
@@ -1346,6 +1352,7 @@
   # Variable driver stack (SMM)
   #
   QemuQ35Pkg/QemuFlashFvbServicesRuntimeDxe/FvbServicesStandaloneMm.inf
+  SecurityPkg/CryptoIndicatorTable/CryptoIndicatorCollectorStandaloneMm.inf
   MdeModulePkg/Universal/FaultTolerantWriteDxe/FaultTolerantWriteStandaloneMm.inf
   MdeModulePkg/Universal/Variable/RuntimeDxe/VariableStandaloneMm.inf {
     <LibraryClasses>

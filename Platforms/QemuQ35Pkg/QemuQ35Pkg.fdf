@@ -456,6 +456,7 @@ INF  UefiCpuPkg/CpuIo2Smm/CpuIo2StandaloneMm.inf
 INF  QemuQ35Pkg/QemuFlashFvbServicesRuntimeDxe/FvbServicesStandaloneMm.inf
 INF  MdeModulePkg/Universal/FaultTolerantWriteDxe/FaultTolerantWriteStandaloneMm.inf
 INF  MdeModulePkg/Universal/Variable/RuntimeDxe/VariableStandaloneMm.inf
+INF  SecurityPkg/CryptoIndicatorTable/CryptoIndicatorCollectorStandaloneMm.inf
 INF  MdeModulePkg/Universal/Variable/RuntimeDxe/VariableSmmRuntimeDxe.inf
 
 #
@@ -504,6 +505,7 @@ INF  DfciPkg/Application/DfciMenu/DfciMenu.inf
 INF  MsGraphicsPkg/PrintScreenLogger/PrintScreenLogger.inf
 INF  SecurityPkg/Hash2DxeCrypto/Hash2DxeCrypto.inf
 INF  SecurityPkg/CryptoIndicatorTable/CryptoIndicatorTableDxe.inf
+INF  SecurityPkg/CryptoIndicatorTable/CryptoIndicatorBridgeDxe.inf
 INF  MsCorePkg/AcpiRGRT/AcpiRgrt.inf
 
 #
