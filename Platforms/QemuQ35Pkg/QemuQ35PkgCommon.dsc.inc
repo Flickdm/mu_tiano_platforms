@@ -33,6 +33,9 @@
 !ifndef TPM2_ENABLE
   DEFINE TPM2_ENABLE                    = FALSE
 !endif
+!ifndef DFCI_NETWORK_RECOVERY_TEST
+  DEFINE DFCI_NETWORK_RECOVERY_TEST     = FALSE
+!endif
   DEFINE TPM_CONFIG_ENABLE              = FALSE
   DEFINE OPT_INTO_MFCI_PRE_PRODUCTION   = TRUE
   DEFINE BUILD_UNIT_TESTS               = TRUE
@@ -247,7 +250,11 @@
   BcfgCommandLib   |ShellPkg/Library/UefiShellBcfgCommandLib/UefiShellBcfgCommandLib.inf
 
   # DFCI / XML / JSON Libraries
+!if $(DFCI_NETWORK_RECOVERY_TEST) == TRUE
+  DfciUiSupportLib                  |QemuPkg/Library/DfciUiSupportLibTest/DfciUiSupportLibTest.inf
+!else
   DfciUiSupportLib                  |QemuPkg/Library/DfciUiSupportLib/DfciUiSupportLib.inf # Supports DFCI Groups.
+!endif
   DfciV1SupportLib                  |DfciPkg/Library/DfciV1SupportLibNull/DfciV1SupportLibNull.inf # Backwards compatibility with DFCI V1 functions.
   DfciDeviceIdSupportLib            |QemuPkg/Library/DfciDeviceIdSupportLib/DfciDeviceIdSupportLib.inf
   DfciGroupLib                      |DfciPkg/Library/DfciGroupLibNull/DfciGroups.inf
@@ -774,6 +781,9 @@
   # Network Pcds
   #
 !include NetworkPkg/NetworkFixedPcds.dsc.inc
+!if $(DFCI_NETWORK_RECOVERY_TEST) == TRUE
+  gEfiNetworkPkgTokenSpaceGuid.PcdAllowHttpConnections|TRUE
+!endif
   gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmStackSize|0x4000
   gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmSyncMode|0x00
   gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmApSyncTimeout|1000000
@@ -1227,6 +1237,13 @@
   MdeModulePkg/Universal/EsrtFmpDxe/EsrtFmpDxe.inf
   MsCorePkg/AcpiRGRT/AcpiRgrt.inf
   DfciPkg/Application/DfciMenu/DfciMenu.inf
+!if $(DFCI_NETWORK_RECOVERY_TEST) == TRUE
+  DfciPkg/Application/DfciApply/DfciApply.inf
+  DfciPkg/Application/DfciMenu/DfciSARecovery.inf {
+    <LibraryClasses>
+      DebugLib|MdePkg/Library/UefiDebugLibConOut/UefiDebugLibConOut.inf
+  }
+!endif
 
   MsGraphicsPkg/PrintScreenLogger/PrintScreenLogger.inf
   SecurityPkg/Hash2DxeCrypto/Hash2DxeCrypto.inf

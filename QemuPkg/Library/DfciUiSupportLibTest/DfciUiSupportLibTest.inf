@@ -1,0 +1,24 @@
+## @file
+# DfciUiSupportLibTest.inf
+#
+# Test-only DFCI UI support for unattended QEMU recovery tests.
+#
+# Copyright (c) Microsoft Corporation.
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION         = 0x00010017
+  BASE_NAME           = DfciUiSupportLibTest
+  FILE_GUID           = 8e62e5f6-59aa-46ab-a50d-d853ef0c345c
+  VERSION_STRING      = 1.0
+  MODULE_TYPE         = DXE_DRIVER
+  LIBRARY_CLASS       = DfciUiSupportLib
+
+[Sources]
+  DfciUiSupportLibTest.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  DfciPkg/DfciPkg.dec

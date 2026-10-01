@@ -537,7 +537,11 @@ FILE FREEFORM = PCD(gDfciPkgTokenSpaceGuid.PcdDfciTimerFile) {
     SECTION RAW = DfciPkg/Include/Resources/DfciWorking.bmp
 }
 FILE FREEFORM = PCD(gZeroTouchPkgTokenSpaceGuid.PcdZeroTouchCertificateFile) {
+!if $(DFCI_NETWORK_RECOVERY_TEST) == TRUE
+    SECTION RAW = DfciPkg/UnitTests/DfciTests/Certs/ZTD_Leaf.cer
+!else
     SECTION RAW = ZeroTouchPkg/Certs/ZeroTouch/ZtdRecovery.cer
+!endif
 }
 
   INF DfciPkg/IdentityAndAuthManager/IdentityAndAuthManagerDxe.inf

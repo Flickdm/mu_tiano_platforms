@@ -1,0 +1,16 @@
+{
+  "scope": "global",
+  "type": "web",
+  "id": "onecrypto-bin-dfci-recovery",
+  "name": "onecrypto-bin-dfci-recovery",
+  "override_id": "onecrypto-bin",
+  "source": "https://github.com/Flickdm/mu_crypto_release/releases/download/v1.1.1-dfci-level2-notime.0/OneCrypto-X64-DEBUG-level2-no-time-check.zip",
+  "version": "1.1.1-dfci-level2-notime.0",
+  "sha256": "e375712b58d5419503260ab87a983620d9df820f1a01a7c2e79542f251dd51b9",
+  "compression_type": "zip",
+  "internal_path": "/",
+  "flags": [
+    "set_build_var"
+  ],
+  "var_name": "BLD_*_ONE_CRYPTO_PATH"
+}
