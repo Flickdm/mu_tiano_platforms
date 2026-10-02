@@ -53,7 +53,7 @@ stages:
             BuildExtraStep:
               - template: Steps/RustSetupSteps.yml@mu_devops
             Run: true
-            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
             BuildArtifactsBinary: |
               **/QEMUQ35_*.fd
             BuildArtifactsOther: "**/unit_test_results/*"
@@ -68,7 +68,7 @@ stages:
             BuildExtraStep:
               - template: Steps/RustSetupSteps.yml@mu_devops
             Run: true
-            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
             BuildArtifactsBinary: |
               **/QEMUQ35_*.fd
             BuildArtifactsOther: "**/unit_test_results/*"
@@ -100,7 +100,7 @@ stages:
                 displayName: Install openssl
               - template: Steps/RustSetupSteps.yml@mu_devops
             Run: true
-            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
             BuildArtifactsBinary: |
               **/QEMU_EFI.fd
               **/SECURE_FLASH0.fd
@@ -118,7 +118,7 @@ stages:
                 displayName: Install openssl
               - template: Steps/RustSetupSteps.yml@mu_devops
             Run: true
-            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
             BuildArtifactsBinary: |
               **/QEMU_EFI.fd
               **/SECURE_FLASH0.fd
@@ -155,7 +155,7 @@ stages:
             BuildExtraStep:
               - template: Steps/RustSetupSteps.yml@mu_devops
             Run: true
-            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
             BuildArtifactsBinary: |
               **/QEMUQ35_*.fd
             BuildArtifactsOther: "**/unit_test_results/*"
@@ -170,7 +170,7 @@ stages:
             BuildExtraStep:
               - template: Steps/RustSetupSteps.yml@mu_devops
             Run: true
-            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+            RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE BLD_*_QEMU_CORE_NUM=2 FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
             BuildArtifactsBinary: |
               **/QEMUQ35_*.fd
             BuildArtifactsOther: "**/unit_test_results/*"

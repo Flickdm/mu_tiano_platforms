@@ -162,7 +162,7 @@ jobs:
           architecture: ${{ matrix.architecture }}
           target: ${{ matrix.target }}
           tool-chain: ${{ matrix.tool-chain }}
-          stuart-args: 'SHUTDOWN_AFTER_RUN=TRUE FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE QEMU_HEADLESS=TRUE BLD_*_QEMU_CORE_NUM=${{ needs.vars.outputs.qemu-core-count }} ${{ env.TPM_ARGS }}'
+          stuart-args: 'SHUTDOWN_AFTER_RUN=TRUE FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE QEMU_HEADLESS=TRUE BLD_*_QEMU_CORE_NUM=${{ needs.vars.outputs.qemu-core-count }} ${{ env.TPM_ARGS }}'
           working-directory: ${{ steps.short-path.outputs.short-path || github.workspace }}
 
       - name: Run ${{ matrix.platform }} ${{ matrix.target }} ${{ matrix.tool-chain}}
@@ -175,7 +175,7 @@ jobs:
           architecture: ${{ matrix.architecture }}
           target: ${{ matrix.target }}
           tool-chain: ${{ matrix.tool-chain }}
-          stuart-args: 'SHUTDOWN_AFTER_RUN=TRUE FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE QEMU_HEADLESS=TRUE BLD_*_QEMU_CORE_NUM=${{ needs.vars.outputs.qemu-core-count }} ${{ env.TPM_ARGS }}'
+          stuart-args: 'SHUTDOWN_AFTER_RUN=TRUE FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE QEMU_HEADLESS=TRUE BLD_*_QEMU_CORE_NUM=${{ needs.vars.outputs.qemu-core-count }} ${{ env.TPM_ARGS }}'
           working-directory: ${{ steps.short-path.outputs.short-path || github.workspace }}
 
       - name: Publish Logs

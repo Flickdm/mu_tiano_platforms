@@ -72,7 +72,7 @@ jobs:
         BuildExtraStep:
           - script: echo No extra steps provided
         Run: true
-        RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+        RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
         SelfHostAgent: true
         BuildArtifactsBinary: |
           **/QEMU_EFI.fd
@@ -88,7 +88,7 @@ jobs:
         BuildExtraStep:
           - script: echo No extra steps provided
         Run: true
-        RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi RUN_TESTS=TRUE"
+        RunFlags: "SHUTDOWN_AFTER_RUN=TRUE QEMU_HEADLESS=TRUE EMPTY_DRIVE=TRUE FILE_REGEX=*TestApp*.efi,*BaseCryptLibUnitTestShell*.efi RUN_TESTS=TRUE"
         SelfHostAgent: true
         BuildArtifactsBinary: |
           **/QEMU_EFI.fd
