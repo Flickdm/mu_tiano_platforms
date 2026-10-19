@@ -878,6 +878,11 @@
   #
   # OneCrypto Binary Drivers
   #
+  SecurityPkg/RandomNumberGenerator/RngStandaloneMm/RngStandaloneMm.inf {
+    <LibraryClasses>
+      RngLib|MdePkg/Library/BaseRngLib/BaseRngLib.inf
+  }
+
   $(ONE_CRYPTO_PATH)/$(TARGET)/AARCH64/OneCryptoLoaders/OneCryptoLoaderDxe.inf {
     <PcdsPatchableInModule>
       gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x8040004F
